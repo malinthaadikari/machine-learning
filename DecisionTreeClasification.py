@@ -1,10 +1,13 @@
 from __future__ import print_function
 import pandas as pand
 from sklearn.tree import DecisionTreeClassifier
+import os.path
+import os.path
+resource_path = os.path.join(os.path.split(__file__)[0], "resources")
 
 
 def load_data():
-    df = pand.read_csv("/home/malintha/projects/ML/datasets/titanic.csv");
+    df = pand.read_csv(resource_path+"/datasets/titanic.csv");
     return df
 
 
@@ -40,5 +43,5 @@ if __name__ == '__main__':
 
     dt = DecisionTreeClassifier(min_samples_split=20, random_state=9)
     dt.fit(X, Y)
-    print(dt.predict(Z))
+    print(dt.predict([Z]))
     

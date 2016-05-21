@@ -1,10 +1,12 @@
 from __future__ import print_function
 import pandas as pand
+import os.path
 from sklearn.cluster import KMeans
+resource_path = os.path.join(os.path.split(__file__)[0], "resources")
 
 
 def load_data():
-    df = pand.read_csv("/home/malintha/PycharmProjects/HelloWorld/crime_data.csv")
+    df = pand.read_csv(resource_path+"/datasets/crime_data.csv")
     return df
 
 
