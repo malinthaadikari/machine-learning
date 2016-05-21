@@ -1,17 +1,9 @@
 from __future__ import print_function
-import pandas as pand
-import os.path
 from sklearn.cluster import KMeans
-resource_path = os.path.join(os.path.split(__file__)[0], "resources")
-
-
-def load_data():
-    df = pand.read_csv(resource_path+"/datasets/crime_data.csv")
-    return df
-
+import Utils
 
 if __name__ == '__main__':
-    df = load_data()
+    df = Utils.get_dataframe("crime_data.csv")
     print(df.shape)
     kmeans_model = KMeans(n_clusters=2, random_state=1)
     df.drop(['crime$cluster'], inplace=True, axis=1)
