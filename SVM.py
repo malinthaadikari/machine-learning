@@ -1,6 +1,7 @@
 from __future__ import print_function
 from sklearn import svm
 from sklearn.metrics import mean_squared_error
+from sklearn.metrics import accuracy_score
 import Utils
 
 
@@ -49,7 +50,7 @@ if __name__ == '__main__':
     Y = df["Survived"]
     Z = [1, 1, 22.0, 1, 0, 7.25, 0, 0]
 
-    svm = svm.SVC(gamma=0.0001, C=1000)
+    svm = svm.SVC(gamma=0.001, C=1000)
     svm.fit(X, Y)
     print(svm.predict([Z]))
 
@@ -57,5 +58,8 @@ if __name__ == '__main__':
 
     predictions = svm.predict(test[features])
     mse = mean_squared_error(predictions, test["Survived"])
-    # print(dt.predict([Z]))
+    print(svm.predict([Z]))
+
+    # get the accuracy
+    print(accuracy_score(test["Survived"], predictions))
     print(mse)
