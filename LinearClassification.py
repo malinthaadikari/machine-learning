@@ -12,8 +12,7 @@ import numpy as np
 
 
 def mean_score(scores):
-    return ("Mean score: {0:,.3f} (+/-{1:.3f})").format(np.mean(scores), sem(scores))
-
+    return "Mean score: {0:,.3f} (+/-{1:.3f})".format(np.mean(scores), sem(scores))
 
 # load iris dataset in to iris variable
 iris = datasets.load_iris()
