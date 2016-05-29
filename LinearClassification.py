@@ -59,6 +59,9 @@ print(metrics.accuracy_score(Y_train, clf.predict(X_train)))
 # Getting the accuracy of the model using test set
 print(metrics.accuracy_score(Y_test, clf.predict(X_test)))
 
+# getting performance report of the classifier
+print(metrics.classification_report(Y_test, clf.predict(X_test), target_names=iris.target_names))
+
 # Getting confusion matrix
 print(metrics.confusion_matrix(Y_test, clf.predict(X_test)))
 
