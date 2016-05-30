@@ -81,18 +81,12 @@ if __name__ == "__main__":
     X_train, X_test, Y_train, Y_test = train_test_split(reshaped_train_dataset, read_labels(LABEL_PATH), test_size=0.20,
                                                         random_state=33)
 
-    a = datetime.datetime.now()
-
     train_and_evaluate(my_svc, X_train, Y_train)
-    b = datetime.datetime.now()
 
-    c = datetime.datetime.now()
-
-    d = datetime.datetime.now()
-
+    # Persisting trained model for future predicting purposes
     filename = '/tmp/digits_classifier.joblib.pkl'
     _ = joblib.dump(my_svc, filename, compress=9)
 
-    clf2 = joblib.load(filename)
+    persisted_classifier = joblib.load(filename)
 
-    print(metrics.accuracy_score(Y_test, clf2.predict(X_test)))
+    print(metrics.accuracy_score(Y_test, persisted_classifier.predict(X_test)))
